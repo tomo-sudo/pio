@@ -1,0 +1,15 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+Lbs_per_stn	stonewt.h	/^	enum {Lbs_per_stn = 14};$/;"	e	enum:Stonewt::__anonbc5670af0103
+STONEWT1_H_	stonewt.h	/^#define STONEWT1_H_$/;"	d
+Stonewt	stonewt.cpp	/^Stonewt::Stonewt(double lbs)$/;"	f	class:Stonewt
+Stonewt	stonewt.h	/^class Stonewt$/;"	c
+__anonbc5670af0103	stonewt.h	/^	enum {Lbs_per_stn = 14};$/;"	g	class:Stonewt
+pds_left	stonewt.h	/^	double pds_left;$/;"	m	class:Stonewt	typeref:typename:double
+pounds	stonewt.h	/^	double pounds;$/;"	m	class:Stonewt	typeref:typename:double
+stone	stonewt.h	/^	int stone;$/;"	m	class:Stonewt	typeref:typename:int
