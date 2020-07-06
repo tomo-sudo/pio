@@ -1,0 +1,87 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+$(prom)	dataconvert/Makefile	/^$(prom): $(obj)$/;"	t
+$(prom)	stringmod/badinstance/Makefile	/^$(prom): $(obj)$/;"	t
+$(prom)	stringmod/strmod/Makefile	/^$(prom): $(obj)$/;"	t
+%.o	dataconvert/Makefile	/^%.o: %.cpp $(deps)$/;"	t
+%.o	stringmod/badinstance/Makefile	/^%.o: %.cpp $(deps)$/;"	t
+%.o	stringmod/strmod/Makefile	/^%.o: %.cpp $(deps)$/;"	t
+ArSize	stringmod/strmod/sayings2.cpp	/^const int ArSize = 10;$/;"	v	typeref:typename:const int
+CINLIM	stringmod/strmod/string1.h	/^	static const int CINLIM = 80;$/;"	m	class:String	typeref:typename:const int
+HowMany	stringmod/strmod/string1.cpp	/^int String::HowMany()$/;"	f	class:String	typeref:typename:int
+LIMIT	filefunc_couterr.cpp	/^const int LIMIT = 5;$/;"	v	typeref:typename:const int
+Lbs_per_stn	dataconvert/stonewt1.h	/^	enum {Lbs_per_stn = 14};$/;"	e	enum:Stonewt::__anon0a020dca0103
+MaxLen	stringmod/strmod/sayings2.cpp	/^const int MaxLen = 81;$/;"	v	typeref:typename:const int
+STONEWT1_H_	dataconvert/stonewt1.h	/^#define STONEWT1_H_$/;"	d
+STRING1_H_	stringmod/strmod/string1.h	/^#define STRING1_H_$/;"	d
+STRNGBAD_H_	stringmod/badinstance/strngbad.h	/^#define STRNGBAD_H_$/;"	d
+ShowArray	temptempover.cpp	/^void ShowArray(T *arr[], int n)$/;"	f	typeref:typename:void
+ShowArray	temptempover.cpp	/^void ShowArray(T arr[], int n)$/;"	f	typeref:typename:void
+Stonewt	dataconvert/stonewt.cpp	/^Stonewt::Stonewt()$/;"	f	class:Stonewt
+Stonewt	dataconvert/stonewt.cpp	/^Stonewt::Stonewt(double lbs)$/;"	f	class:Stonewt
+Stonewt	dataconvert/stonewt.cpp	/^Stonewt::Stonewt(int stn, double lbs)$/;"	f	class:Stonewt
+Stonewt	dataconvert/stonewt1.h	/^class Stonewt$/;"	c
+String	stringmod/strmod/string1.cpp	/^String::String()$/;"	f	class:String
+String	stringmod/strmod/string1.cpp	/^String::String(const String &st)$/;"	f	class:String
+String	stringmod/strmod/string1.cpp	/^String::String(const char *s)$/;"	f	class:String
+String	stringmod/strmod/string1.h	/^class String$/;"	c
+StringBad	stringmod/badinstance/strngbad.cpp	/^StringBad::StringBad()$/;"	f	class:StringBad
+StringBad	stringmod/badinstance/strngbad.cpp	/^StringBad::StringBad(const char *s)$/;"	f	class:StringBad
+StringBad	stringmod/badinstance/strngbad.h	/^class StringBad$/;"	c
+__anon0a020dca0103	dataconvert/stonewt1.h	/^	enum {Lbs_per_stn = 14};$/;"	g	class:Stonewt
+__anonde208fac0102	stringmod/strmod/string1.cpp	/^{$/;"	f	file:
+amount	temptempover.cpp	/^	double amount;$/;"	m	struct:debts	typeref:typename:double	file:
+callme1	stringmod/badinstance/vegnews.cpp	/^void callme1(StringBad &rsb)$/;"	f	typeref:typename:void
+callme2	stringmod/badinstance/vegnews.cpp	/^void callme2(StringBad sb)$/;"	f	typeref:typename:void
+cc	dataconvert/Makefile	/^cc = g++$/;"	m
+cc	stringmod/badinstance/Makefile	/^cc = g++$/;"	m
+cc	stringmod/strmod/Makefile	/^cc = g++$/;"	m
+clean	dataconvert/Makefile	/^clean:$/;"	t
+clean	stringmod/badinstance/Makefile	/^clean:$/;"	t
+clean	stringmod/strmod/Makefile	/^clean:$/;"	t
+debts	temptempover.cpp	/^struct debts$/;"	s	file:
+deps	dataconvert/Makefile	/^deps = $(shell find .\/ -name "*.h")$/;"	m
+deps	stringmod/badinstance/Makefile	/^deps = $(shell find .\/ -name "*.h")$/;"	m
+deps	stringmod/strmod/Makefile	/^deps = $(shell find .\/ -name "*.h")$/;"	m
+file_it	filefunc_couterr.cpp	/^void file_it(ostream & os, double fo, const double fe[], int n)$/;"	f	typeref:typename:void
+len	stringmod/badinstance/strngbad.h	/^	int len;$/;"	m	class:StringBad	typeref:typename:int
+len	stringmod/strmod/string1.h	/^	int len;$/;"	m	class:String	typeref:typename:int
+length	stringmod/strmod/string1.h	/^	int length() const {return len;}$/;"	f	class:String	typeref:typename:int
+main	dataconvert/stone1.cpp	/^int main()$/;"	f	typeref:typename:int
+main	filefunc_couterr.cpp	/^int main()$/;"	f	typeref:typename:int
+main	stringmod/badinstance/vegnews.cpp	/^int main()$/;"	f	typeref:typename:int
+main	stringmod/strmod/sayings2.cpp	/^int main()$/;"	f	typeref:typename:int
+main	temptempover.cpp	/^int main()$/;"	f	typeref:typename:int
+name	temptempover.cpp	/^	char name[20];$/;"	m	struct:debts	typeref:typename:char[20]	file:
+num_strings	stringmod/badinstance/strngbad.cpp	/^int StringBad::num_strings = 0;$/;"	m	class:StringBad	typeref:typename:int
+num_strings	stringmod/badinstance/strngbad.h	/^	static int num_strings;$/;"	m	class:StringBad	typeref:typename:int
+num_strings	stringmod/strmod/string1.cpp	/^int String::num_strings = 0;$/;"	m	class:String	typeref:typename:int
+num_strings	stringmod/strmod/string1.h	/^	static int num_strings;$/;"	m	class:String	typeref:typename:int
+obj	dataconvert/Makefile	/^obj = $(src:%.cpp=%.o) $/;"	m
+obj	stringmod/badinstance/Makefile	/^obj = $(src:%.cpp=%.o) $/;"	m
+obj	stringmod/strmod/Makefile	/^obj = $(src:%.cpp=%.o) $/;"	m
+operator <<	stringmod/badinstance/strngbad.cpp	/^std::ostream &operator<<(std::ostream &os, const StringBad &st)$/;"	f	typeref:typename:std::ostream &
+operator <<	stringmod/strmod/string1.cpp	/^ostream &operator<<(ostream &os, const String &st)$/;"	f	typeref:typename:ostream &
+operator =	stringmod/strmod/string1.cpp	/^String & String::operator=(const char *s)$/;"	f	class:String	typeref:typename:String &
+operator =	stringmod/strmod/string1.cpp	/^String &String::operator=(const String &st)$/;"	f	class:String	typeref:typename:String &
+operator >	stringmod/strmod/string1.cpp	/^bool operator>(const String &st1, const String &st2)$/;"	f	typeref:typename:bool
+operator >>	stringmod/strmod/string1.cpp	/^istream &operator>>(istream &is, String &st)$/;"	f	typeref:typename:istream &
+operator []	stringmod/strmod/string1.cpp	/^char &String::operator[](int i)$/;"	f	class:String	typeref:typename:char &
+pds_left	dataconvert/stonewt1.h	/^	double pds_left;$/;"	m	class:Stonewt	typeref:typename:double
+pounds	dataconvert/stonewt1.h	/^	double pounds;$/;"	m	class:Stonewt	typeref:typename:double
+show_lbs	dataconvert/stonewt.cpp	/^void Stonewt::show_lbs() const$/;"	f	class:Stonewt	typeref:typename:void
+show_stn	dataconvert/stonewt.cpp	/^void Stonewt::show_stn() const$/;"	f	class:Stonewt	typeref:typename:void
+src	dataconvert/Makefile	/^src = $(shell find .\/ -name "*.cpp")$/;"	m
+src	stringmod/badinstance/Makefile	/^src = $(shell find .\/ -name "*.cpp")$/;"	m
+src	stringmod/strmod/Makefile	/^src = $(shell find .\/ -name "*.cpp")$/;"	m
+stone	dataconvert/stonewt1.h	/^	int stone;$/;"	m	class:Stonewt	typeref:typename:int
+str	stringmod/badinstance/strngbad.h	/^	char *str;$/;"	m	class:StringBad	typeref:typename:char *
+str	stringmod/strmod/string1.h	/^	char *str;$/;"	m	class:String	typeref:typename:char *
+~Stonewt	dataconvert/stonewt.cpp	/^Stonewt::~Stonewt()$/;"	f	class:Stonewt
+~String	stringmod/strmod/string1.cpp	/^String::~String()$/;"	f	class:String
+~StringBad	stringmod/badinstance/strngbad.cpp	/^StringBad::~StringBad()$/;"	f	class:StringBad
