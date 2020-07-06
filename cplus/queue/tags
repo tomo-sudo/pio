@@ -1,0 +1,45 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+$(prom)	Makefile	/^$(prom): $(obj)$/;"	t
+%.o	Makefile	/^%.o: %.cpp $(deps)$/;"	t
+Customer	queue.h	/^	Customer()$/;"	f	class:Customer
+Customer	queue.h	/^class Customer$/;"	c
+Item	queue.h	/^typedef Customer Item;$/;"	t	typeref:typename:Customer
+MIN_PER_HR	bank.cpp	/^const int MIN_PER_HR = 60;$/;"	v	typeref:typename:const int
+Node	queue.h	/^	struct Node$/;"	s	class:Queue
+QUEUE_H_	queue.h	/^#define QUEUE_H_$/;"	d
+Q_SIZE	queue.h	/^	enum {Q_SIZE = 10};$/;"	e	enum:Queue::__anon168587600103
+Queue	queue.cpp	/^Queue::Queue(int qs) : qsize(qs)$/;"	f	class:Queue
+Queue	queue.h	/^	Queue(const Queue &q) : qsize(0) {}$/;"	f	class:Queue
+Queue	queue.h	/^class Queue$/;"	c
+__anon168587600103	queue.h	/^	enum {Q_SIZE = 10};$/;"	g	class:Queue
+arrvive	queue.h	/^	long arrvive;$/;"	m	class:Customer	typeref:typename:long
+cc	Makefile	/^cc = g++$/;"	m
+clean	Makefile	/^clean:$/;"	t
+deps	Makefile	/^deps = $(shell find .\/ -name "*.h")$/;"	m
+dequeue	queue.cpp	/^bool Queue::dequeue(Item &item)$/;"	f	class:Queue	typeref:typename:bool
+enqueue	queue.cpp	/^bool Queue::enqueue(const Item &item)$/;"	f	class:Queue	typeref:typename:bool
+front	queue.h	/^	Node *front;$/;"	m	class:Queue	typeref:typename:Node *
+isempty	queue.cpp	/^bool Queue::isempty() const$/;"	f	class:Queue	typeref:typename:bool
+isfull	queue.cpp	/^bool Queue::isfull() const$/;"	f	class:Queue	typeref:typename:bool
+item	queue.h	/^		Item item;$/;"	m	struct:Queue::Node	typeref:typename:Item
+items	queue.h	/^	int items;$/;"	m	class:Queue	typeref:typename:int
+main	bank.cpp	/^int main()$/;"	f	typeref:typename:int
+newcustomer	bank.cpp	/^bool newcustomer(double x)$/;"	f	typeref:typename:bool
+next	queue.h	/^		struct Node *next;$/;"	m	struct:Queue::Node	typeref:struct:Node *
+obj	Makefile	/^obj = $(src:%.cpp=%.o) $/;"	m
+operator =	queue.h	/^	Queue &operator=(const Queue q)$/;"	f	class:Queue	typeref:typename:Queue &
+processtime	queue.h	/^	int processtime;$/;"	m	class:Customer	typeref:typename:int
+ptime	queue.h	/^	int ptime() const$/;"	f	class:Customer	typeref:typename:int
+qsize	queue.h	/^	const int qsize;$/;"	m	class:Queue	typeref:typename:const int
+queuecount	queue.cpp	/^int Queue::queuecount() const$/;"	f	class:Queue	typeref:typename:int
+rear	queue.h	/^	Node *rear;$/;"	m	class:Queue	typeref:typename:Node *
+set	queue.cpp	/^void Customer::set(long when)$/;"	f	class:Customer	typeref:typename:void
+src	Makefile	/^src = $(shell find .\/ -name "*.cpp")$/;"	m
+when	queue.h	/^	long when() const$/;"	f	class:Customer	typeref:typename:long
+~Queue	queue.cpp	/^Queue::~Queue()$/;"	f	class:Queue
