@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+MAX	stacktp.h	/^	enum {MAX = 10};$/;"	e	enum:Stack::__anon6d693c150103
+Stack	stacktp.h	/^Stack<Type>::Stack()$/;"	f	class:Stack
+Stack	stacktp.h	/^class Stack$/;"	c
+__anon6d693c150103	stacktp.h	/^	enum {MAX = 10};$/;"	g	class:Stack
+isempty	stacktp.h	/^bool Stack<Type>::isempty()$/;"	f	class:Stack	typeref:typename:bool
+isfull	stacktp.h	/^bool Stack<Type>::isfull()$/;"	f	class:Stack	typeref:typename:bool
+items	stacktp.h	/^	Type items[MAX];$/;"	m	class:Stack	typeref:typename:Type[]
+main	stacktem.cpp	/^int main()$/;"	f	typeref:typename:int
+pop	stacktp.h	/^bool Stack<Type>::pop(Type &item)$/;"	f	class:Stack	typeref:typename:bool
+push	stacktp.h	/^bool Stack<Type>::push(const Type &item)$/;"	f	class:Stack	typeref:typename:bool
+top	stacktp.h	/^	int top;$/;"	m	class:Stack	typeref:typename:int
