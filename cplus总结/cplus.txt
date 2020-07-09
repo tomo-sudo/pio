@@ -1,0 +1,696 @@
+1、有时cout无法输出，需要使用cin.get()
+2、列表初始化
+ int guess{3.9932}
+ char c2 = {22211};
+注：大括号内必须是常数
+  int('Q')
+  static_cast<int>(ch)将一种数据类型转换为另一种数据类型
+  auto声明
+  字符串可以使用+相连
+  使用new分配内存需要用delete释放
+  int *ps = new int
+  delete ps
+
+  默认参数
+  默认参数从右往左一次赋值，不可跳过，如：
+ int harp(int n, int m = 3, int j = 2)
+3、函数重载
+ 函数重载需要参数列表不同，参数列表相同，返回值类型不同的函数不可以重载。
+ 函数重载的场合：函数执行的任务相同，但需要使用不同类型的参数。
+4、模板
+ template <typename AnyType>
+ void Swap(AnyType &a, AnyTime &b)
+ {}
+
+ template <typename T>
+ void Swap(T a[], T b[], int n)
+ {}
+
+ template <class T>
+ void f(T a, T b)
+ {}
+
+ void Swap(job &, job &)    //无模板
+ 
+ template <typename T>
+ void Swap(T &, T &)        //普通模板
+
+ template void Swap<int>(int, int) //显式实例化
+ template <> void Swap<job>(job &, job &) //显式具体化模板
+ template <> void Swap(job &, job &) //显式具体化模板，与上等价
+ 
+ 非模板版本优先于显式具体化优先于模板
+
+ int x; decltype(x) y; 此时y 具有与x相同的类型
+ decltype(x + y) xpy; 此时xpy与x+y具有相同的类型
+ long t1(int)
+ decltype(t1())  m, 此时m类型为int
+
+ auto h(int x, float y) -> double;//auto为占位符，为double占位子，double为函数返回类型
+ auto gt(T1 x, T2 y) -> declrtype(x+y)
+ {
+	return x + y;
+ }
+
+5、静态持续变量，内部链接性，无链接性
+6、存储说明符：auto,register,static,extern,thread_local, mutable(由const解释)
+  cv限定符：const,volatile
+  struct data
+ {
+	char name[29];
+	mutable in accesses;
+ };
+
+ const data, 此时data中的accesses成员可以被修改。struct 默认访问类型为public
+ 语言的链接性
+ extern "C" void spiff(int)使用c
+ extern void spiff      默认使用c++
+ extern "C++" void spiff 使用c++
+
+ int *pi = new int (6)
+ struct wh {double x; double y; double z;}
+ wh *one = new wh{1.2, 3.1, 3.2}
+ int *ar = new int [4]{1,2,3,4}
+
+ int *pin = new int{}}
+ double *pdo = new double {11.11}
+
+ int *pi = new int <==> int *pi = new(sizeof(int))
+ int *pa = new int[40] <==> int *pa = new(40 * sizeof(int))
+ delete pi 
+ delete(pi)
+
+ using ss::gg;
+ using namespace xx;
+
+7、构造函数和析构函数
+ 默认构造函数 Stock::Stock(){}
+
+ Stock first;     //使用默认构造函数
+ Stock first = Stock() //显式使用构造函数
+ Stock *p = new Stock;//隐式使用构造函数
+
+ Stock d("ss") //声明调用默认构造函数
+ Stock sed();     //声明返回Stock对象的函数
+ Stock third;      //使用默认构造函数
+
+~Stock();
+
+Stock::~Stock()
+{
+	
+}
+
+
+this指针指向本类，其类型为指针
+
+ 内联函数
+ 
+class Stock
+{
+private:
+	void set_tot();
+
+}
+
+inline void Stock::set_tot()
+{
+	total_val = shares * share_val;
+}
+
+Stock stocks[4] = {
+	Stock("a", 12, 22);
+ 	Stock("a", 12, 22);
+	Stock("a", 12, 22);
+	Stock("a", 12, 22);
+};
+
+枚举
+为避免枚举的作用域冲突，可以使用如下方法：
+enum class egg {AA, BB, CC, FF};
+egg choice = egg::AA;
+int a = int(egg::AA)
+
+友元
+友元与类中声明，与类中成员具有相同的权限，但不属于类中成员
+
+class Time
+{
+public:
+	friend Time operator*(double m, const Time &t)
+}
+
+
+不能在类声明中初始化static成员变量
+如果在头文件中初始化变量，将产生多个副本，带来错误。
+声明描述了如何分配内存，但不分配内存。
+初始化类成员static数据，指出数据类型，作用域运算符，但不指出存储类型static
+
+8、深度复制与浅度复制
+ 类成员使用new初始化，指向数据的指针，而非数据本身。
+ 如果类中使用new初始化指针成员，应定义一个复制构造函数，以复制指向的数据，而非指针，此为深度复制。
+ 浅度复制只是复制指针值，而不复制指针对应的数据与结构.
+
+9、返回对象
+ 返回对象的方式：指向对象的引用、指向对象的const引用、const对象
+ const用于提高效率。
+ 注意：返回对象将调用复制构造函数，返回引用不会，故返回引用效率更高。
+ delete []与new []初始化的指针和指针均兼容。
+ 
+ char words[14] = "bad";
+ char *p1 = words;
+ char *p2 = new char;
+ char *p3;
+
+一下均有隐患
+ delete []p1;
+ delete []p2;
+ delete []p3;
+ 
+ 注意：new char[1]构造的函数与析构函数兼容，new char不兼容。
+ 
+ c++98中，0可以表示数值0,也可以表示空指针，为区别，可用（void*）0表示null，c++11引入nullptr表示空指针。
+ 
+10、构造函数冲突
+  JustTesting(const string &s = "aa", int n = 0) //默认无参数调用会调到，如果没有赋值默认参数，则无参构造函数不会调用。
+  {xxxxxxxxxxxxxxx}
+  JustTesting(){xxxxxxxx}
+  以上两个函数会冲突，因为默认会同时调用两个。
+
+pc1 = new (buffer)JustTesting;
+pc1地址相对默认构造函数的偏移为JustTesting
+pc3 = new (buffer + sizeof(JustTesting))JustTesting("Better Idea", 6);
+pc3地址相对pc1地址偏移为JustTesting
+
+pointer = new (xxx)Obj
+xxx 为Obj偏移的地址
+
+delete []将释放常规的new运算符分配的内存块，但如上new (xxx)Obj 无法收到new的地址，所以使用delete[]将出现段错误，必须显式调用析构函数才可以释放内存。
+
+构造函数使用new 或new []，不可混用。
+
+c++11类内初始化
+class Classy
+{
+	int mem1 = 10;
+	const int mem2 = 29;	
+};
+可换成如下：
+Classy::Classy() : mem1(10), mem2(29){...}
+
+如：
+Queue::Queue(int qs) : qsize(qs), front(NULL), rear(NULL), item(0){}
+
+Classy::Classy(int n, int m) : mem1(n), mem2(0),mem2(m*n + 2)
+{
+
+}
+以上为构造函数初始化写法
+
+
+返回值不可以为void &
+
+
+实践证明,类(class)私有成员可以被类成员函数访问,不区分成员在哪个实例(instance)里。
+
+也就是说，在类内部的成员函数中，哪怕是传入的对象，也是可以直接访问该对象的私有成员。（前提是该对象必须是本类型的一个对象）
+就是说在类的函数中，如果该函数的类型与该函数所在class的一样，该函数的参数对象的私有数据可以传给该函数对应类型的参数，后被该class的对象间接获得。
+不仅仅是运算符重载。
+
++无法进行友元声明。
+用成员方式重载运算符,   不能改变参数的个数  ，二元运算符用成员重载时,  只需要一个参数, 另一个参数由this指针传入  。如果需要两个参数，那么可以在类外面定义，然后在类里声明为友元。
+也就是说，在类内声明，类外定义的友元函数才可以使用两个参数;类内的常规成员函数必须使用一个参数。
+友元函数之所以可以使用私有变量，是因为类内声明，类外定义的形式本质上还是参数传递，参数传递给类成员的函数，就可以引用同类成员。
+
+注意：需要直接获得私有数据时，必须确保类成员函数的参数的数据类型与该函数所在类的数据类型一致。
+
+11、类继承
+注意：将using置于class或函数块中，不可以将置于全局变量所在的位置。
+派生类对象存储基类的数据成员（派生类继承基类的实现）
+派生类对象可以使用基类的方法（派生类对象继承基类的接口）
+
+派生类需要自己的构造函数
+派生类可以更具需求添加额外的数据成员与方法
+
+class RatedPlayer : public TableTennisPlayer
+{
+	...
+};
+
+冒号表示RatedPlayer类的基类是TableTennisPlayer，而public表示TableTennisPlayer是一个公共基类。
+
+关于权限访问
+派生了类不能直接访问基类的私有成员，必须通过基类访问。
+派生类构造函数必须使用基类构造函数，这意味着基类对象应该当程序进入派生类构造函数前被创建。
+
+虚继承
+虚继承的目的是让某个类做出声明，承诺愿意共享它的基类，可以避免多继承带来的数据冲突。
+
+必须使用基类的公共方法访问基类的私有数据，继承类不可以直接访问基类的私有数据。
+
+如使用默认构造函数，就不需要显式构造函数，如果不使用默认构造函数，就必须显式调用基类构造函数。
+
+虚函数
+定义一个函数为虚函数，不代表函数为不被实现的函数。
+
+定义他为虚函数是为了允许用基类的指针来调用子类的这个函数。
+
+定义一个函数为纯虚函数，才代表函数没有被实现。
+
+定义纯虚函数是为了实现一个接口，起到一个规范的作用，规范继承这个类的程序员必须实现这个函数。
+
+作者：wuxinliulei
+链接：https://www.zhihu.com/question/23971699/answer/69592611
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+C++纯虚函数
+一、定义　
+纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。在基类中实现纯虚函数的方法是在函数原型后加“=0”　virtual void funtion1()=0
+二、引入原因　　
+1、为了方便使用多态特性，我们常常需要在基类中定义虚拟函数。　
+2、在很多情况下，基类本身生成对象是不合情理的。例如，动物作为一个基类可以派生出老虎、孔雀等子类，但动物本身生成对象明显不合常理。　　
+为了解决上述问题，引入了纯虚函数的概念，将函数定义为纯虚函数（方法：virtual ReturnType Function()= 0;），则编译器要求在派生类中必须予以重写以实现多态性。同时含有纯虚拟函数的类称为抽象类，它不能生成对象。这样就很好地解决了上述两个问题。声明了纯虚函数的类是一个抽象类。所以，用户不能创建类的实例，只能创建它的派生类的实例。
+纯虚函数最显著的特征是：它们必须在继承类中重新声明函数（不要后面的＝0，否则该派生类也不能实例化），而且它们在抽象类中往往没有定义。
+定义纯虚函数的目的在于，使派生类仅仅只是继承函数的接口。纯虚函数的意义，让所有的类对象（主要是派生类对象）都可以执行纯虚函数的动作，但类无法为纯虚函数提供一个合理的缺省实现。所以类纯虚函数的声明就是在告诉子类的设计者，“你必须提供一个纯虚函数的实现，但我不知道你会怎样实现它”。
+
+class
+{
+public:
+	virtual void Show() = 0;表示纯虚函数，用=0
+};
+
+在什么情况下使用纯虚函数(pure vitrual function)?
+
+1，当想在基类中抽象出一个方法，且该基类只做能被继承，而不能被实例化；
+2，这个方法必须在派生类(derived class)中被实现；
+   如果满足以上两点，可以考虑将该方法申明为纯虚函数(pure virtual function).
+
+
+函数转型
+1.常规函数与数据类型一致
+2.虚函数与存储地址一致
+以上调用不是优先调用，而是调用规则，亦即如果不存在对应的函数，编译将失败。
+注：只有virtual函数（由地址决定同名函数调用）存在多态。
+
+protected访问权限
+在没有继承的情况下，protected跟private相同。在派生类的时候才出现分化
+
+派生类对象如果要访问基类protected成员只有通过派生类对象，派生类不能访问基类对象的protected成员。
+只有在派生类中才可以通过派生类对象访问基类的protected成员
+
+注：不可以将基类对象和地址赋给派生类引用和指针，如下是错误的
+A &rr = b; b是基类对象
+A *pe = b
+
+可以使用
+B * b = a;
+B &b = a;
+
+派生类引用或指针转为基类引用或指针为向上转换，反之为乡下转换。
+
+虚继承与虚基类可以避免多继承带来的名称冲突。
+
+以下元素不可继承
+构造函数不能继承
+派生类构造函数使用成员初始化列表的语法调用构造函数，以创建派生对象的基类部分，如果前述动作，派生类将使用基类的默认构造函数。
+析构函数不能继承
+释放对象时程序将首先调用派生类的析构函数，后调用基类的析构函数，若基类有默认析构函数，编译器将为派生类生成默认析构函数，基类的析构函数应该是虚函数。
+
+赋值运算符不可继承
+
+私有成员，保护成员
+
+
+
+虚方法
+如果希望派生类能够重新定义方法没，则应在基类中将方法定义为虚的;如果不希望方法被重新定义，应该不将方法定义为虚的，及不可以将方法重定义。
+
+析构函数
+
+友元函数
+
+注：string将分配空间，char *不会
+
+string po <==> char *po = new char[40]
+
+有调用程序创建不同指针，栈的作用在于管理指针，而非创建指针。
+
+C++提供了关键字explicit，可以阻止不应该允许的经过转换构造函数进行的隐式转换的发生,声明为explicit的构造函数不能在隐式转换中使用。
+
+
+12、模板深入
+显式实例化
+用template指出所需类型来声明，编译器将生成类声明的显式实例化，声明必须处于木板定义所在的名称空间中。
+如下
+template class ArrayTP<string, 100>
+
+
+显式具体化
+显式具体化是特定类型（用于替换模板的泛型）的定义。
+template <typename T>
+class SortedArray
+{
+	xxx
+};
+
+显式具体化格式
+template <> class Classname<specialiezed-type-name>{...};
+
+注：g++小括号，大括号后加;将不报错。
+
+泛型（general template）
+template <class T1, class T2> class Pair {...}
+部分具体化
+template <class T1> class Pair<T1, int> {...}
+
+template <> class Pair<int, int> {}
+
+
+template <template <typename T> class Thing, typename U, typename V>
+T是模板类型，U,V是非模板类型。
+
+
+注：初始化static数据，需要加基本数据类型，且如果是模板，则需要使用<>来指定数据类型
+template <typename T>
+int HasFriend<T>::ct = 0;
+
+模板类和友元
+约束模板友元，友元类型取决与类被实例化时的类型
+非约束模板友元，友元的所有具体化都是类的每一个具体化的友元
+
+模板类的约束模板友元函数
+
+声明模板函数
+template <typename T> void counts();
+template <typename T> void report(T &);
+
+template <typename TT>
+class HasFriendT
+{
+	friend void counts<TT>();     <> 不可以为空，因为无参数，所以不可以推测数据类型
+	friend void report<>(HasFriendT<TT> &); <>可以为空，因为可以推测数据类型
+};
+<>指出是模板具体化
+
+report可以写成friend void report<HasFriendT<TT>>(HasFriendT<TT>&)
+约束模板在类外面声明模板的具体化。
+
+非约束模板在类内声明模板
+template <typename T>
+class ManyFriend
+{
+	template <typename c, typename D> friend void show2(C &, D &);
+};
+
+模板别名
+typedef std::array<double, 12> arrd;
+typedef std::array<int, 12> arrd;
+
+除了typedef using也可以起到别名的作用。
+template <typename T>
+using arrtype = std::array<T, 12>;
+
+arrtype<double> a1;
+arrtype<int> a2;
+arrtype<std::string> months;
+
+
+13、vector
+
+vector
+vector<int> ratings(NUM) 表示NUM个int rating对象
+cin >> ratings[i]
+
+vector<string> titles(NUM)
+getline(cin, titles[i])
+
+补：
+istream& getline (char* s, streamsize n );
+istream& getline (char* s, streamsize n, char delim );
+
+作用是： 从istream中读取至多n个字符(包含结束标记符)保存在s对应的数组中。即使还没读够n个字符，
+
+如果遇到delim 或 字数达到限制，则读取终止，delim都不会被保存进s对应的数组中。
+
+istream& getline (istream&  is, string& str, char delim);
+istream& getline (istream&& is, string& str, char delim);
+istream& getline (istream&  is, string& str);
+
+istream& getline (istream&& is, string& str);
+用法和上第一种类似，但是读取的istream是作为参数is传进函数的。读取的字符串保存在string类型的str中。
+
+函数的变量：
+
+is    ：表示一个输入流，例如cin。
+
+str   ：string类型的引用，用来存储输入流中的流信息。
+
+delim ：char类型的变量，所设置的截断字符；在不自定义设置的情况下，遇到’\n’，则终止输入。
+
+vector具有STL具有的push_back方法，用于将vector对象放在末尾。
+erase用于删除制定区间的对象，eg:scores.erase(scores.begin(), scores.begin() + 2),该区间形式为[)，
+begin()指第一个有效成员
+end（）是一个空指针，位于最有一个有效成员之后。
+insert函数与erase相反，节后3个迭代器参数，第一个参数指定新元素插入的位置，第二和第三个迭代器定义被插入区间（指的是被插入元素的范围）
+size()表示成员个数
+
+vector<int> old_v
+vectot<int> new_v
+old_v.insert(old_v.begin(), new_v.begin() + 1, new_v.end())将new_v向量对象中除第一个成员之外的所有成员放于old_v向量对象的第一个成员之前。
+
+vector<double>::iterator pd;
+
+
+
+14、泛型编程
+STL是一种泛型编程，面向对象关注数据，泛型编程关注算法。
+泛型编程旨在写独立与数据类型的代码。
+模板使算法独立于数据类型，迭代器使算法独立于使用的容器。
+
+
+15、迭代器
+STL分为5个迭代器：输入迭代器、输出迭代器、正向迭代器、双向迭代器、随机访问迭代器
+输入迭代器
+template <class InputIterator, class T>
+InputIterator find(InputIterator first, InputIterator last, const &value)
+输入来自容器，容器的值可以解引用，但不一定可以修改;且是单向，可递增，不可以递减
+不能保证二次迭代顺序不变
+
+输出迭代器
+在数值上类似于cout可以修改，但不可以读取，需要发送到终端或其他地方才可以读取
+不能保证二次迭代数值一样
+
+正向迭代器
+只使用++遍历，多次遍历，数值一样
+
+双向迭代器
+其具有正向迭代的所有特性，但可以递减
+
+随机访问迭代器
+template <class RandomAccessIterator>
+void sort(RandomAccessIterator first, RandomAccessIterator last)
+
+可以直接跳到容器的任何一个元素，叫随即访问
+
+
+iter1 == iter2 真，则 *iter1 == *iter2真
+
+迭代器是广义的指针、是STL算法的接口、由于指针是迭代器，可以将迭代器用于数组。
+
+
+int casts[10] = {6, 7, 2, 9, 4, 11, 8, 7, 10, 5};
+	vector<int> dice(10);
+
+copy(casts, casts + 10, dice.begin())
+将cast值复制到dice开始的位置
+
+copy(s2, s2 + 2, back_insert_iterator<vector<string>>(words));
+for_each(words.begin(), words.end(), output);
+只允许从尾部快速插入容器（words容器是vector对象）
+
+
+copy(s2, s2 + 2, front_insert_iterator<vector<string>>(words));
+将元素插至容器的头部
+
+copy(s3, s3 + 2, insert_iterator<vector<string>>(words, words.begin()));
+insert可以指定位置插入
+
+STL容器的种类：deque,list,queue,priority_queue,stack,vector,map,multimap,set, multiset,bitset
+c++11新增forward_list,unordered_map,unordered_multimap,unordered_set,unordered_multiset
+
+容器是存储其他对象的对象。
+存于容器的数据类型必须可以复制构造和可赋值（只要类中的复制构造函数和赋值重载函数没有声明为私有类型即可）
+基本容器不能保证器元素均按顺序存储。
+
+void remove(const &val) 删除地val个对象，起始位置为1
+
+list<int> one(5, 2);
+将对象one进行初始化，使用5个int型的2数值进行初始化。
+int vals[10] = {50, 100, 90, 180, 60, 210, 415, 88, 188, 201};
+list<int> yadayada(vals, vals + 10）
+
+
+splice将第二个人list类型的参数插入至第一个迭代器类的位置的参数之前
+void splice(iterator pos, list<T, Alloc>x)
+
+three.splice(three.begin(), one);
+
+void merge(list<T,Alloc>&x) 链表合并，必须排序
+
+void unique()使得链表有集合的特性，不允许重复的元素存在
+
+
+16、函数符
+生成器（generator）：不用参数就可以调用的函数符
+一元函数（unary function）：用一个参数可以调用的函数符
+二元函数（binary function）：用两个参数可以调用的函数符
+
+返回bool值的一元函数是谓词（predicate）
+返回bool值的二元函数是二元谓词（binary predicate）
+
+bool WorseThan(const Review &r1, const Review &r2)
+sort(book.begin(), book.end(), WorseThan)
+
+
+bool tooBig(int n) {return n > 100;}
+list<int> scores;
+scores.remove_if(tooBig)
+
+
+template<class T>
+class TooBig
+{
+private:
+	T cutoff;
+public:
+	TooBig(const T &t) : cutoff(t){}
+	bool operator()(const T &v){ return v > cutoff; }  //v is transferred from list objects' members
+};
+
+yadayada.remove_if(f100);
+etcetera.remove_if(TooBig<int>(200));
+编译器将自动识别参数，remove_if只能传入一个参数，所以将自动识别容器成员参数与非容器成员参数。
+
+
+double arr1[LIM] = {28, 29, 30, 35, 38, 59};
+double arr2[LIM] = {63, 65, 69, 75, 80, 99};
+
+vector<double> gr8(arr1, arr1 + LIM);
+vector<double> m8(arr2, arr2 + LIM);
+
+
+
+例如：op的一个实现 即将[first1, last1]范围内的每个元素加5，然后依次存储到result中。
+
+int op_increase(int i) {return (i + 5)};
+
+transform在指定的范围内应用于给定的操作，并将结果存储在指定的另一个范围内。transform函数包含在<algorithm>头文件中。
+
+以下是std::transform的两个声明
+一元操作：
+
+template <class InputIterator, class OutputIterator, class UnaryOperation>
+
+OutputIterator transform (InputIterator first1, InputIterator last1,OutputIterator result, UnaryOperation op);
+对于一元操作，将op应用于[first1, last1]范围内的每个元素，并将每个操作返回的值存储在以result开头的范围内。给定的op将被连续调用last1-first1+1次。
+
+op可以是函数指针或函数对象或lambda表达式。
+
+例如：op的一个实现 即将[first1, last1]范围内的每个元素加5，然后依次存储到result中。
+
+int op_increase(int i) {return (i + 5)};
+调用std::transform的方式如下：
+
+std::transform(first1, last1, result, op_increase);
+二元操作：
+
+template <class InputIterator1, class InputIterator2,class OutputIterator, class BinaryOperation>
+OutputIterator transform (InputIterator1 first1, InputIterator1 last1,InputIterator2 first2, OutputIterator result,BinaryOperation binary_op);
+
+对于二元操作，使用[first1, last1]范围内的每个元素作为第一个参数调用binary_op,并以first2开头的范围内的每个元素作为第二个参数调用binary_op,每次调用返回的值都存储在以result开头的范围内。给定的binary_op将被连续调用last1-first1+1次。binary_op可以是函数指针或函数对象或lambda表达式。
+
+bind1st(multiplies<double>(), 2.5)
+将乘法运算符多乘以2.5倍，也就将二元运算符编程一元运算符
+transform(gr8.begin(), gr8.end(), prod.begin(),
+			bind1st(multiplies<double>(), 2.5));
+将gr8的成员作为第一个乘法参数，将prod成员作为第二个参数，一一对应使用乘法运算符计算
+
+17、Lambda表达式
+Lambda表达式是一种匿名函数（没有名字的函数），
+[](int x){return x % 3 == 0} 类似于bool f3(int x) {return x % 3 == 0;}
+Lambda表达式使用[]代替函数名字;没有返回类型，类型相当于使用decltyo返回值推断而得。
+
+count3 = std::count_if(numbers.begin(), numbers.end(),
+		[](int x){return x % 3 == 0;})
+使用Lambda函数替换函数指针或函数符构造函数。
+
+int cout13;
+count13 = std::count_if(numbers.begin(), numbers.end(), 
+		[](int x){return x % 13 == 0;})
+
+等价于如下
+int count13 = 0;
+std::for_each(numbers.begin(), numbers.end(), 
+		[&count13](int x){count13 += x % 13 == 0;})
+
+
+int count3 = 0;
+int count13 = 0;
+std::for_each(numbers.begin(), numbers.end(),
+		[&](int x){count3 += x % 3 == 0; count13 += x % 13 == 0;})
+[&]使得Lambda表达式中所有的自动变量可以被使用。
+
+
+补充：
+集合运算:
+set_union(A.begin(), A.end(), B.begin(), B.end(),
+		ostream_iterator<string, char> out(cout, " "))
+用于输出A,B并集
+
+set_intersection:用于输出交集
+set_difference：用于输出集合差
+
+
+关联容器
+typedef int KeyType;
+typedef std::pair<const KeyType, std::string> Pair;
+typedef std::multimap<KeyType, std::string> MapCode;
+
+MapCode codes;
+
+codes.insert(Pair(415, "San"));
+
+MapCode::iterator it;
+
+for(it = codes.begin(); it != codes.end(); ++it)
+	cout << "	" << (*it).first << "	"
+		<< (*it).second << endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
