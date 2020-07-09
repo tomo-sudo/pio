@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+$(prom)	Makefile	/^$(prom): $(obj)$/;"	t
+%.o	Makefile	/^%.o: %.cpp $(deps)$/;"	t
+HasTable	tabltenn0.h	/^	bool HasTable() const { return hasTable; }$/;"	f	class:TableTennisPlayer	typeref:typename:bool
+ResetTable	tabltenn0.h	/^	void ResetTable(bool v){ hasTable = v; }$/;"	f	class:TableTennisPlayer	typeref:typename:void
+TableTennisPlayer	tabltenn0.h	/^class TableTennisPlayer$/;"	c
+cc	Makefile	/^cc = g++$/;"	m
+clean	Makefile	/^clean:$/;"	t
+deps	Makefile	/^deps = $(shell find .\/ -name "*.h")$/;"	m
+firstbane	tabltenn0.h	/^	string firstbane;$/;"	m	class:TableTennisPlayer	typeref:typename:string
+hasTable	tabltenn0.h	/^	bool hasTable;$/;"	m	class:TableTennisPlayer	typeref:typename:bool
+lastname	tabltenn0.h	/^	string lastname;$/;"	m	class:TableTennisPlayer	typeref:typename:string
+obj	Makefile	/^obj = $(src:%.cpp=%.o) $/;"	m
+src	Makefile	/^src = $(shell find .\/ -name "*.cpp")$/;"	m

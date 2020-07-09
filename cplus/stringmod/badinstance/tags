@@ -1,0 +1,12 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+STRNGBAD_H_	strngbad.h	/^#define STRNGBAD_H_$/;"	d
+StringBad	strngbad.h	/^class StringBad$/;"	c
+len	strngbad.h	/^	int len;$/;"	m	class:StringBad	typeref:typename:int
+num_strings	strngbad.h	/^	static int num_strings;$/;"	m	class:StringBad	typeref:typename:int
+str	strngbad.h	/^	char *str;$/;"	m	class:StringBad	typeref:typename:char *
