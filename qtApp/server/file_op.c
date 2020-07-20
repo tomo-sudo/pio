@@ -1,5 +1,6 @@
 //genernal use
-#include "userInfo.h"
+#include "file_op.h"
+
 int openF(char *name)
 {
 	int fd = open(name, O_RDWR|O_APPEND);

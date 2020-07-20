@@ -1,4 +1,4 @@
-val= fileOp.o userInfo.o
+val= file_op.o mysql_op.o socket.o server.o
 
 CFLAG =  -I.     #-Werror 在编译时会将warning看成error
 
@@ -7,7 +7,7 @@ dep_files:=$(patsubst %, .%, d, $(val))
 dep_files:=$(wildcard $(dep_files))
 
 test:$(val)
-	gcc -o  userInfo `mysql_config --cflags --libs` -lpthread  $^
+	gcc -o  server `mysql_config --cflags --libs` -lpthread  $^
 
 ifneq ($(depfiles),)
 include $(dep_files)
@@ -17,7 +17,7 @@ endif
 	gcc $(CFLAG)  -c -g -o  $@ $< -MD -MF .$@.d 
 
 clean:
-	rm *.o userInfo .*.d
+	rm *.o server .*.d
 
 ditclean:
 	rm $(dep_files)
