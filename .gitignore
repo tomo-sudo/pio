@@ -57,9 +57,6 @@ libtool
 local/snmpcheck
 local/snmpconf
 Makefile
-man/*.[1358]
-man/default_store.3.h
-man/manaliases
 mibs/.index
 mk/
 module_tmp_header.h
