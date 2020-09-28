@@ -1,0 +1,54 @@
+#!/bin/sh
+# This program splits an upsteam GNU Bison source release into two
+# Debian original source tarballs: one for the DFSG-free parts of
+# Bison (including the main program), and the other for the Bison
+# manual (which is not DFSG-free).  This program was originally
+# developed against Bison 3.0.4.
+
+if [ -z "${BISON_VER}" ]; then
+  >&2 echo 'Please set $BISON_VER before running this script'
+  exit 1
+fi
+
+UPSTREAM_DIR="bison-${BISON_VER}"
+BISON_DFSG_DIR="bison-${BISON_VER}.dfsg"
+BISON_DOC_DIR="bison-doc-${BISON_VER}"
+
+UPSTREAM_XZ="bison-${BISON_VER}.tar.xz"
+BISON_DFSG_XZ="bison_${BISON_VER}.dfsg.orig.tar.xz"
+BISON_DOC_XZ="bison-doc_${BISON_VER}.orig.tar.xz"
+
+if [ ! -f "${UPSTREAM_XZ}" ]; then
+  >&2 echo "File ${UPSTREAM_XZ} does not exist"
+  exit 2
+fi
+
+rm -Rf "${UPSTREAM_DIR}" "${BISON_DFSG_DIR}" "${BISON_DOC_DIR}" \
+  "${BISON_DFSG_XZ}" "${BISON_DOC_XZ}"
+
+tar Jxf "${UPSTREAM_XZ}"
+
+mkdir "${BISON_DOC_DIR}"
+mkdir "${BISON_DOC_DIR}/doc"
+
+# These files are licensed under DFSG with invariant section
+mv "${UPSTREAM_DIR}/doc/figs" "${BISON_DOC_DIR}/doc"
+mv "${UPSTREAM_DIR}/doc/bison.info" "${BISON_DOC_DIR}/doc"
+mv "${UPSTREAM_DIR}/doc/bison.texi" "${BISON_DOC_DIR}/doc"
+
+# These files are needed to build the texi documentation
+cp -a "${UPSTREAM_DIR}/doc/cross-options.texi" "${BISON_DOC_DIR}/doc"
+cp -a "${UPSTREAM_DIR}/doc/fdl.texi" "${BISON_DOC_DIR}/doc"
+cp -a "${UPSTREAM_DIR}/doc/gpl-3.0.texi" "${BISON_DOC_DIR}/doc"
+cp -a "${UPSTREAM_DIR}/doc/relocatable.texi" "${BISON_DOC_DIR}/doc"
+cp -a "${UPSTREAM_DIR}/doc/version.texi" "${BISON_DOC_DIR}/doc"
+
+# These files are to be used with examples in the DFSG documentation
+cp -a "${UPSTREAM_DIR}/examples" "${BISON_DOC_DIR}"
+
+mv "${UPSTREAM_DIR}" "${BISON_DFSG_DIR}"
+
+tar Jcf "${BISON_DFSG_XZ}" "${BISON_DFSG_DIR}"
+tar Jcf "${BISON_DOC_XZ}" "${BISON_DOC_DIR}"
+
+rm -Rf "${BISON_DFSG_DIR}" "${BISON_DOC_DIR}"
